@@ -1,8 +1,26 @@
-<p><%= @question %></p>
-<p><%= "You" %></p>
+<% def answer(question)
+  if question == "I am going to work"
+    return "Great!"
+  elsif question.end_with?("?")
+    return "Silly question, get dressed and go to work!"
+  else
+    return "I don't care, get dressed and go to work!"
+  end
+end %>
 
-<p><%= @question %></p>
-<p><%= @question %></p>
-# If the message is I am going to work, the coach will answer Great!
-# If the message has a question mark ? at the end, the coach will answer Silly question, get dressed and go to work!.
-# Otherwise the coach will answer I don't care, get dressed and go to work!
+<div class="card">
+<h1>Stupid Coaching</h1>
+
+  <div class="card-body student">
+    <p class="text-input"><%= @question %></p>
+    <p class = "text-author"><%= "- You" %></p>
+  </div>
+
+  <div class="card-body coach">
+    <p class="text-input"><%= @answer = answer(@question) %></p>
+    <p class = "text-author"><%= "- Your coach" %></p>
+  </div>
+
+</div>
+
+<%= link_to "Ask a new question", ask_path %>
